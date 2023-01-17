@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 import { CONSTANTS } from '../constants';
-import HomeMap from '../maps/HomeMap';
+import HomeSelector from '../selectors/HomeSelector';
 
 
 fixture `Automation Assessment -> Scenario 1`
@@ -8,7 +8,7 @@ fixture `Automation Assessment -> Scenario 1`
 
 test('API call test', async t => {
     // Step 1. Make an API call to get the devices
-    const response = await t.request(CONSTANTS.SERVER.DEVICES.GET);
+    const response = await t.request(CONSTANTS.SERVER.DEVICES.URL);
     const devicesFromAPI = response.body;
 
     // Step 2. Assert that the response is not empty and has the devices
@@ -29,9 +29,9 @@ test('API call test', async t => {
         const element = await elements.nth(i);  // Getting the nth element
 
         // Step 6.1 Getting the device name, type and capacity from the DOM
-        const deviceName = await element.find(HomeMap.deviceName);
-        const deviceType = await element.find(HomeMap.deviceType);
-        const deviceCapacity = await element.find(HomeMap.deviceCapacity);
+        const deviceName = await element.find(HomeSelector.deviceName);
+        const deviceType = await element.find(HomeSelector.deviceType);
+        const deviceCapacity = await element.find(HomeSelector.deviceCapacity);
         
         // Step 6.2 Assert that the device name, type and capacity exists in the DOM
         await t.expect(await deviceName.exists).ok(`The device name: ${deviceName} is not visible`);
@@ -39,8 +39,8 @@ test('API call test', async t => {
         await t.expect(await deviceCapacity.exists).ok(`The device capacity: ${deviceCapacity} is not visible`);
 
         // Step 6.3 Getting the buttons edit/remove from the DOM
-        const editButton = await element.find(HomeMap.editButton);
-        const removeButton = await element.find(HomeMap.removeButton);
+        const editButton = await element.find(HomeSelector.editButton);
+        const removeButton = await element.find(HomeSelector.removeButton);
 
         // Step 6.4 Assert that the buttons edit/remove exists in the DOM
         await t.expect(await editButton.exists).ok(`The edit button is not visible in the DOM for the device: ${deviceName}`);
@@ -50,7 +50,11 @@ test('API call test', async t => {
         // Step 6.5 Adding the device name, type and capacity to the devicesFromUI array
         let currentDeviceCapacity = await deviceCapacity.innerText;
         currentDeviceCapacity = currentDeviceCapacity.replace(/[^0-9]/g, ""); // Getting only the numbers from the string
-        devicesFromUI.push({"system_name": deviceName, "type": deviceType, "hdd_capacity": deviceCapacity});
+        devicesFromUI.push({
+            "system_name": await deviceName.innerText, 
+            "type": await deviceType.innerText, 
+            "hdd_capacity": currentDeviceCapacity
+        });
     }
 
     // Step 7. Get the difference between the devices from the API and the devices from the UI

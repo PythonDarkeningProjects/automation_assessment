@@ -1,8 +1,8 @@
 import { Selector } from 'testcafe';
 import { CONSTANTS } from '../constants';
 import { generateUUID } from '../utilities/common';
-import DeviceAddMap from '../maps/DeviceAddMap';
-import HomeMap from '../maps/HomeMap';
+import DeviceAddSelector from '../selectors/DeviceAddSelector';
+import HomeSelector from '../selectors/HomeSelector';
 
 
 fixture `Automation Assessment -> Scenario 2`
@@ -10,13 +10,13 @@ fixture `Automation Assessment -> Scenario 2`
 
 test('Create New Device', async t => {
     // Step 1: Click on the Add Device button
-    const addDeviceButton = Selector(HomeMap.addDeviceButton);
+    const addDeviceButton = Selector(HomeSelector.addDeviceButton);
     await t.click(addDeviceButton);
 
     // Step 2: Fill out the form
-    const systemNameInput = Selector(DeviceAddMap.systemNameInput);
-    const selectTypeInput = Selector(DeviceAddMap.selectTypeInput);
-    const hddCapacityInput = Selector(DeviceAddMap.hddCapacityInput);
+    const systemNameInput = Selector(DeviceAddSelector.systemNameInput);
+    const selectTypeInput = Selector(DeviceAddSelector.selectTypeInput);
+    const hddCapacityInput = Selector(DeviceAddSelector.hddCapacityInput);
 
     const uuid = generateUUID(8);
     const expectedDeviceName = `Test Device ${uuid}`;
@@ -30,7 +30,7 @@ test('Create New Device', async t => {
     await t.click(selectTypeInput.find('option').withText(expectedType));
 
     // Step 3: Click on the Save button
-    await t.click(Selector(DeviceAddMap.saveButton));
+    await t.click(Selector(DeviceAddSelector.saveButton));
 
     // Step 4: Verify that the device was created
     const elements = Selector('div.device-main-box');
@@ -42,9 +42,9 @@ test('Create New Device', async t => {
         const element = await elements.nth(i);  // Getting the nth element
 
         // Step 5.1 Getting the current device name, type and capacity from the DOM
-        const deviceName = await element.find(HomeMap.deviceName);
-        const deviceType = await element.find(HomeMap.deviceType);
-        const deviceCapacity = await element.find(HomeMap.deviceCapacity);
+        const deviceName = await element.find(HomeSelector.deviceName);
+        const deviceType = await element.find(HomeSelector.deviceType);
+        const deviceCapacity = await element.find(HomeSelector.deviceCapacity);
 
         if(await deviceName.innerText == expectedDeviceName){
             // Step 5.2 Assert that the type and capacity are the expected ones

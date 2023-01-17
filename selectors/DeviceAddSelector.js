@@ -1,5 +1,5 @@
 
-class DeviceAddMap {
+class DeviceAddSelector {
     constructor() {
         this.systemNameInput = '#system_name';
         this.selectTypeInput = '#type';
@@ -8,4 +8,4 @@ class DeviceAddMap {
     }
 }
 
-export default new DeviceAddMap();
+export default new DeviceAddSelector();

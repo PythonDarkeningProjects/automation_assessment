@@ -4,7 +4,7 @@ class Constants {
     }
     SERVER = {
         DEVICES: {
-            GET: "http://localhost:3000/devices"
+            URL: "http://localhost:3000/devices"
         }
     }
 }

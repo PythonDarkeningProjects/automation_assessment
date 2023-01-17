@@ -1,5 +1,5 @@
 
-class HomeMap {
+class HomeSelector {
     constructor() {
         this.addDeviceButton ='.submitButton';
         this.deviceInfo = '.device-info';
@@ -11,4 +11,4 @@ class HomeMap {
     }
 }
 
-export default new HomeMap();
+export default new HomeSelector();
