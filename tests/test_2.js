@@ -39,12 +39,12 @@ test('Create New Device', async t => {
 
     // Step 5. Iterate through the elements and get the device name, type and capacity
     for (let i = 0; i < elementCount; i++) {
-        const element = await elements.nth(i);  // Getting the nth element
+        const element = elements.nth(i);  // Getting the nth element
 
         // Step 5.1 Getting the current device name, type and capacity from the DOM
-        const deviceName = await element.find(HomeSelector.deviceName);
-        const deviceType = await element.find(HomeSelector.deviceType);
-        const deviceCapacity = await element.find(HomeSelector.deviceCapacity);
+        const deviceName = element.find(HomeSelector.deviceName);
+        const deviceType = element.find(HomeSelector.deviceType);
+        const deviceCapacity = element.find(HomeSelector.deviceCapacity);
 
         if(await deviceName.innerText == expectedDeviceName){
             // Step 5.2 Assert that the type and capacity are the expected ones

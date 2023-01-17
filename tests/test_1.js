@@ -25,13 +25,13 @@ test('API call test', async t => {
 
     // Step 6. Iterate over the elements using a for each loop
     let devicesFromUI = [];
-    for (let i = 0; i < elementCount; i++) {
-        const element = await elements.nth(i);  // Getting the nth element
+    for (let i = 0; i < elementCount; i++) {nt
+        const element = elements.nth(i);  // Getting the nth element
 
         // Step 6.1 Getting the device name, type and capacity from the DOM
-        const deviceName = await element.find(HomeSelector.deviceName);
-        const deviceType = await element.find(HomeSelector.deviceType);
-        const deviceCapacity = await element.find(HomeSelector.deviceCapacity);
+        const deviceName = element.find(HomeSelector.deviceName);
+        const deviceType = element.find(HomeSelector.deviceType);
+        const deviceCapacity = element.find(HomeSelector.deviceCapacity);
         
         // Step 6.2 Assert that the device name, type and capacity exists in the DOM
         await t.expect(await deviceName.exists).ok(`The device name: ${deviceName} is not visible`);

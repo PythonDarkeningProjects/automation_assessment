@@ -1,7 +1,5 @@
 import { Selector } from 'testcafe';
 import { CONSTANTS } from '../constants';
-import { generateUUID } from '../utilities/common';
-import DeviceAddSelector from '../selectors/DeviceAddSelector';
 import HomeSelector from '../selectors/HomeSelector';
 
 
@@ -33,10 +31,9 @@ test('Update First Device', async t => {
         url: `${CONSTANTS.SERVER.DEVICES.URL}/${firstDeviceId}`,
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: payload
-        }
-    );
-    
+        body: payload    
+    });
+
     // Step 5. Refresh the page
     await t.eval(() => location.reload(true));
 
