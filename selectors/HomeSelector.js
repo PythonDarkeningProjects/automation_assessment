@@ -1,6 +1,7 @@
 
 class HomeSelector {
     constructor() {
+        this.elements = '.device-main-box';
         this.addDeviceButton ='.submitButton';
         this.deviceInfo = '.device-info';
         this.deviceName = '.device-name';

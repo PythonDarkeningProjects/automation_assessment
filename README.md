@@ -4,8 +4,7 @@
     - [Node](#node)
     - [TestCafe](#testcafe)
   - [How to run the test cases](#how-to-run-the-test-cases)
-    - [One by one](#one-by-one)
-    - [All at the same time](#all-at-the-same-time)
+    - [Test output](#test-output)
   - [Project Structure](#project-structure)
 - [Author](#author)
 
@@ -38,35 +37,12 @@ ____
 <a name="how-to-run-the-test-cases"></a>
 ## How to run the test cases
 
-<a name="one-by-one"></a>
-### One by one
-
-The sintaxis to run a test case is:
-
-
-> testcafe BROWSER tests/TESTNAME.js
-
-*Where*:
-
-- **BROWSER**: is the desired browser on your local machine to run the test cases
-- **TESTNAME**: is the name of the test case to be run
-
-Example:
-
 ```bash
-testcafe chrome tests/test_1.js
+testcafe chrome tests/all_test_cases.js
 ```
 
-
-<a name="all-at-the-same-time"></a>
-### All at the same time
-
-Type the following command on terminal:
-
-```bash
-testcafe chrome tests/*.js
-```
-
+<a name="test-output"></a>
+### Test output
 Example of the test output:
 
 ```bash
@@ -75,19 +51,10 @@ Using locally installed version of TestCafe.
  - Chrome 108.0.0.0 / Ventura 13
 
  Automation Assessment -> Scenario 1
- ✓ API call test
-
- Automation Assessment -> Scenario 2
- ✓ Create New Device
-
- Automation Assessment -> Scenario 3
- ✓ Update First Device
-
- Automation Assessment -> Scenario 4
- ✓ Delete and element from the list
-
-
- 4 passed (20s)
+ ✓ Test #1 -> API call test
+ ✓ Test #2 -> Create New Device
+ ✓ Test #3 -> Update First Device
+ ✓ Test #4 -> Delete and element from the list
 ```
 
 ____
@@ -99,19 +66,21 @@ ____
 ├── LICENSE
 ├── README.md
 ├── constants.js
+├── pages
+│   ├── AddDevicePage.js
+│   └── HomePage.js
 ├── selectors
 │   ├── DeviceAddSelector.js
 │   └── HomeSelector.js
 ├── tests
-│   ├── test_1.js
-│   ├── test_2.js
-│   ├── test_3.js
-│   └── test_4.js
+│   └── all_test_cases.js
 └── utilities
-    └── common.js
+    ├── common.js
+    └── requests.js
 ```
 
 - **constants.js**: contains the constants used in the test cases
+- **pages** folder: contains the page objects used in the test cases
 - **selectors folder**: contains the selectors used in the test cases
 - **tests folder**: contains the test cases
 - **utilities folder**: contains the utilities used in the test cases
