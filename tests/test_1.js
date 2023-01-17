@@ -1,5 +1,7 @@
 import { Selector } from 'testcafe';
 import { CONSTANTS } from '../constants';
+import HomeMap from '../maps/HomeMap';
+
 
 fixture `Automation Assessment -> Scenario 1`
     .page `${CONSTANTS.APP.URL}`;
@@ -27,9 +29,9 @@ test('API call test', async t => {
         const element = await elements.nth(i);  // Getting the nth element
 
         // Step 6.1 Getting the device name, type and capacity from the DOM
-        const deviceName = await element.find(CONSTANTS.ELEMENT_IDENTIFIER.DEVICE_NAME_CSS);
-        const deviceType = await element.find(CONSTANTS.ELEMENT_IDENTIFIER.DEVICE_TYPE_CSS);
-        const deviceCapacity = await element.find(CONSTANTS.ELEMENT_IDENTIFIER.DEVICE_CAPACITY_CSS);
+        const deviceName = await element.find(HomeMap.deviceName);
+        const deviceType = await element.find(HomeMap.deviceType);
+        const deviceCapacity = await element.find(HomeMap.deviceCapacity);
         
         // Step 6.2 Assert that the device name, type and capacity exists in the DOM
         await t.expect(await deviceName.exists).ok(`The device name: ${deviceName} is not visible`);
@@ -37,8 +39,8 @@ test('API call test', async t => {
         await t.expect(await deviceCapacity.exists).ok(`The device capacity: ${deviceCapacity} is not visible`);
 
         // Step 6.3 Getting the buttons edit/remove from the DOM
-        const editButton = await element.find(CONSTANTS.ELEMENT_IDENTIFIER.DEVICE_EDIT);
-        const removeButton = await element.find(CONSTANTS.ELEMENT_IDENTIFIER.DEVICE_REMOVE_CSS);
+        const editButton = await element.find(HomeMap.editButton);
+        const removeButton = await element.find(HomeMap.removeButton);
 
         // Step 6.4 Assert that the buttons edit/remove exists in the DOM
         await t.expect(await editButton.exists).ok(`The edit button is not visible in the DOM for the device: ${deviceName}`);
