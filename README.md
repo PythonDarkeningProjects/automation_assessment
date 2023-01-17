@@ -44,7 +44,7 @@ ____
 The sintaxis to run a test case is:
 
 
-> testcafe <BROWSER> tests/<TESTNAME>.js
+> testcafe BROWSER tests/TESTNAME.js
 
 *Where*:
 
