@@ -25,7 +25,7 @@ test('API call test', async t => {
 
     // Step 6. Iterate over the elements using a for each loop
     let devicesFromUI = [];
-    for (let i = 0; i < elementCount; i++) {nt
+    for (let i = 0; i < elementCount; i++) {
         const element = elements.nth(i);  // Getting the nth element
 
         // Step 6.1 Getting the device name, type and capacity from the DOM

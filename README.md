@@ -67,6 +67,28 @@ Type the following command on terminal:
 testcafe chrome tests/*.js
 ```
 
+Example of the test output:
+
+```bash
+Using locally installed version of TestCafe.
+ Running tests in:
+ - Chrome 108.0.0.0 / Ventura 13
+
+ Automation Assessment -> Scenario 1
+ ✓ API call test
+
+ Automation Assessment -> Scenario 2
+ ✓ Create New Device
+
+ Automation Assessment -> Scenario 3
+ ✓ Update First Device
+
+ Automation Assessment -> Scenario 4
+ ✓ Delete and element from the list
+
+
+ 4 passed (20s)
+```
 
 ____
 
